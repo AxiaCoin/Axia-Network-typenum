@@ -1,0 +1,32 @@
+[package]
+  name = "typenum"
+  build = "build/main.rs"
+  version = "1.15.0" # remember to update html_root_url
+  authors = [
+    "Paho Lurie-Gregg <paho@paholg.com>",
+    "Andre Bogus <bogusandre@gmail.com>"
+  ]
+  documentation = "https://docs.rs/typenum"
+  repository = "https://github.com/axia-tech/typenum"
+  readme = "README.md"
+  license = "MIT OR Apache-2.0"
+  description = """Typenum is a Rust library for type-level numbers evaluated at
+    compile time. It currently supports bits, unsigned integers, and signed
+    integers. It also provides a type-level array of type-level numbers, but its
+    implementation is incomplete."""
+  categories = ["no-std"]
+  edition = "2018"
+
+[lib]
+  name = "typenum"
+
+[dependencies]
+scale-info = { git = "https://github.com/axia-tech/scale-info", branch = "v1.0.0", version = "1.0.0", default-features = false, features = ["derive"], optional = true }
+axia-scale-codec = { git = "https://github.com/axia-tech/axia-scale-codec", branch = "v2.3.1", version = "2.3.1", default-features = false, features = ["derive", "max-encoded-len"], optional = true }
+
+[features]
+  derive_scale = ["scale-info", "axia-scale-codec"]
+  no_std = []
+  i128 = []
+  strict = []
+  force_unix_path_separator = []
